@@ -16,7 +16,7 @@ public class CodingConventions {
 	* for this reason, a constructor must ALWAYS be named after the class 
 	*
 	*/ 
-	public CodingConventions(String name, int descriptionIndex){
+	public CodingConventions(int nameIndex, int descriptionIndex){
 		//instantiate(initialize, say what it is, example) variables now:
 		
 		//there are two variables called "name" the local variable and the field
@@ -24,6 +24,7 @@ public class CodingConventions {
 		this.name = name;
 		//this is a static call to a constant
 		description = IntroMain.DESCRIPTIONS[descriptionIndex];
+		name = IntroMain.NAMES[nameIndex]; 
 	}
 	
 	//normal method "void" is the return type
