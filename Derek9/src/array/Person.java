@@ -17,6 +17,7 @@ public class Person {
 	private Borough home;
 	private Hobby hobby;
 	private Person[] friends;
+	private String nickname;
 	
 	public Person(String first, String last, Borough home) {
 		
@@ -25,7 +26,53 @@ public class Person {
 		this.home = home;
 		friends = new Person[3]; 
 		hobby = Hobby.randomHobby();
+		nickname = createNickname(firstName);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * Pass by value 
+	 * the parameters of a method contain only values, not references
+	 * therefore, when they are changed, the REFERENCE to the original object does not change
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public static String createNickname(String name) {
+		String nickname = "";
+		int vowel = 0;
+		for(int i =0;i<name.length();i++) {
+			String letter = name.substring(i,i+1);
+			if(returnVowel(letter)) {
+				vowel++;
+				if(vowel != 2) {
+					nickname += letter;
+				}
+				else {
+					return nickname;
+				}
+			}
+			else {
+				nickname += letter;
+			}
+		}
+		return name;
+	}
+	
+	public static boolean returnVowel(String letter) {
+		letter = letter.toLowerCase();
+		if(letter.equals("a")||letter.equals("e")||letter.equals("i")||letter.equals("o")||letter.equals("u")) {
+			return true;
+		}
+		return false;
 	}
 	
 	public void statYourFriends() {
@@ -54,7 +101,7 @@ public class Person {
 		
 	}
 	public String toString() {
-		return "My name is "+firstName+" "+lastName+" and I am from "+home+".";
+		return "My name is "+firstName+ " " +lastName+ ". Call me " + nickname+ "and I am from "+home+".";
 	}
 	
 }

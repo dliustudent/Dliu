@@ -28,7 +28,6 @@ public class ObjectMain {
 		+averageCommonality+" people end up in the same position where they started."));
 	}
 
-
 	private void populate(Person[] people)
 	{
 		for(int i =0; i<people.length; i++)
