@@ -198,7 +198,11 @@ public class CaveRoom {
 
 
 	private void setDefaultContents(String defaultContents) {
-		this.defaultContents = defaultContents;
-		
+		this.defaultContents = defaultContents;	
+	}
+
+	public Object getDoor(int direction) {
+		// TODO Auto-generated method stub
+		return doors[direction];
 	}
 }
