@@ -9,14 +9,15 @@ public class CaveExplorer {
 	public static CaveRoom currentRoom;//changes as the user moves
 	public static Inventory inventory;
 	public static boolean playing = true;
-
+	
+	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
 		CaveRoom.setUpCaves();//creates caves and starting room
 		inventory = new Inventory();
 		startExploring();
 	}
-	
+
 	public static void print(String s) {
 		System.out.println(s);//LATER: consider replacing with the more sophistocated "printMultiLine"
 	}
@@ -30,4 +31,5 @@ public class CaveExplorer {
 			currentRoom.interpretInput(in.nextLine());
 		}
 	}
+
 }
