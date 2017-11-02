@@ -7,7 +7,7 @@ public class CaveRoom {
 	private String contents;//a symbol showing you what is in the room... 
 	//...('X' when you are in the room)
 	private String defaultContents;//what is in the room when you aren't in the room
-	
+	private int hp;
 	private CaveRoom[] borderingRooms;
 	private Door[] doors;
 	
@@ -101,6 +101,7 @@ public class CaveRoom {
 	public void interpretInput(String input) {
 		while(!isValid(input)) {
 			printValidMoves();
+			
 			input = CaveExplorer.in.nextLine();
 		}
 		int direction = validMoves().indexOf(input);
@@ -109,21 +110,32 @@ public class CaveRoom {
 		}else {
 			performAction(direction);
 		}
-		
 	}
 	
+	/**
+	 * override to create response to keys other than wdsa
+	 * @param direction
+	 */
 	public void performAction(int direction) {
 		CaveExplorer.print("That key does nothing.");
 	}
 
 
+	/**
+	 * Override to change description of possible moves
+	 */
 	public void printValidMoves() {
 		System.out.println("You can only enter 'w', 'a', 's', or 'd'.");
 	}
-	
+
+	/**
+	 * override to add more moves
+	 * @return
+	 */
 	public String validMoves() {
 		return "wdsa";
 	}
+
 	/**
 	 * returns true if w,a,s, or d is the input (NO IF STATEMENTS)
 	 * @param input
@@ -148,9 +160,12 @@ public class CaveRoom {
 		}
 		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
 		NPC testNPC = new NPC();
-		testNPC.setPosition(1, 2);
+		testNPC.setPosition(1,2);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
+		
+		NPC Princess = new NPC();
+		Princess.setPosition(0, 0);
 		
 		//4.set starting room
 		CaveExplorer.currentRoom = c[0][1];
@@ -160,13 +175,7 @@ public class CaveRoom {
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
 		
-		/**
-		 * 
-		 *	THIS IS FOR 3D ARRAYS 
-		 * 
-		 * CaveRoom[][][] layers = new CaveRoom[3][][];
-		 *	layers[0] = new CaveRoom[3][4];
-		*/
+		
 		//make doors lock after you walk in
 		//teleport to a different room
 		//make map dark
@@ -237,16 +246,8 @@ public class CaveRoom {
 		return doors[direction];
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public void setHp() {
+		hp = 100;
+	}
 }
