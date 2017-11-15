@@ -1,4 +1,3 @@
-
 package javathehardway;
 
 public class Habitat extends Environment {
