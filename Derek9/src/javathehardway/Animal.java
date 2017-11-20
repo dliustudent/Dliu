@@ -94,4 +94,8 @@ public class Animal {
 	public void setMated(boolean b) {
 		this.mated = b;
 	}
+	
+	public void reset() {
+		mated = false;
+	}
 }
